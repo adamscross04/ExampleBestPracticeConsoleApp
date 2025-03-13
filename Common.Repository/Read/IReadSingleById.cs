@@ -11,5 +11,5 @@ public interface IReadSingleById<T>
     /// </summary>
     /// <param name="id">The ID of the entity to read.</param>
     /// <returns>A task representing the asynchronous operation, with the entity as the result.</returns>
-    Task<T> ReadSingleById(Guid id);
+    Task<T?> ReadSingleById(Guid id);
 }
