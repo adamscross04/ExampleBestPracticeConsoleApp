@@ -17,10 +17,13 @@ public class ProductDataMapperTests
     [Fact]
     public void Map_ProductToProductEntity_MapsCorrectly()
     {
+        // Arrange
         Product product = new() { Id = Guid.NewGuid(), Name = "Test Product", Description = "Test Description", Price = 9.99m };
 
+        // Act
         ProductEntity result = _mapper.Map(product);
 
+        // Assert
         AssertProductAndProductEntityAreEquivalent(product, result);
     }
 
@@ -30,10 +33,13 @@ public class ProductDataMapperTests
     [Fact]
     public void Map_ProductEntityToProduct_MapsCorrectly()
     {
+        // Arrange
         ProductEntity productEntity = new() { Id = Guid.NewGuid(), Name = "Test Product", Description = "Test Description", Price = 9.99m };
 
+        // Act
         Product result = _mapper.Map(productEntity);
 
+        // Assert
         AssertProductAndProductEntityAreEquivalent(result, productEntity);
     }
 
@@ -43,7 +49,11 @@ public class ProductDataMapperTests
     [Fact]
     public void Map_ProductToProductEntity_NullProduct_ThrowsArgumentNullException()
     {
-        Assert.Throws<ArgumentNullException>(() => _mapper.Map((Product)null!));
+        // Act
+        Func<ProductEntity> action = () => _mapper.Map((Product)null!);
+
+        // Assert
+        action.Should().ThrowExactly<ArgumentNullException>();
     }
 
     /// <summary>
@@ -52,7 +62,11 @@ public class ProductDataMapperTests
     [Fact]
     public void Map_ProductEntityToProduct_NullProductEntity_ThrowsArgumentNullException()
     {
-        Assert.Throws<ArgumentNullException>(() => _mapper.Map((ProductEntity)null!));
+        // Act
+        Func<Product> action = () => _mapper.Map((ProductEntity)null!);
+
+        // Assert
+        action.Should().ThrowExactly<ArgumentNullException>();
     }
 
     /// <summary>
@@ -61,14 +75,17 @@ public class ProductDataMapperTests
     [Fact]
     public void Map_ProductsToProductEntities_MapsCorrectly()
     {
+        // Arrange
         List<Product> products =
         [
             new() { Id = Guid.NewGuid(), Name = "Product 1", Description = "Description 1", Price = 9.99m },
             new() { Id = Guid.NewGuid(), Name = "Product 2", Description = "Description 2", Price = 19.99m }
         ];
 
+        // Act
         IEnumerable<ProductEntity> result = _mapper.Map(products);
 
+        // Assert
         AssertProductListsAreEquivalent(products, result);
     }
 
@@ -78,14 +95,17 @@ public class ProductDataMapperTests
     [Fact]
     public void Map_ProductEntitiesToProducts_MapsCorrectly()
     {
+        // Arrange
         List<ProductEntity> productEntities =
         [
             new() { Id = Guid.NewGuid(), Name = "Product 1", Description = "Description 1", Price = 9.99m },
             new() { Id = Guid.NewGuid(), Name = "Product 2", Description = "Description 2", Price = 19.99m }
         ];
 
+        // Act
         IEnumerable<Product> result = _mapper.Map(productEntities);
 
+        // Assert
         AssertProductListsAreEquivalent(result, productEntities);
     }
 
@@ -95,7 +115,11 @@ public class ProductDataMapperTests
     [Fact]
     public void Map_ProductsToProductEntities_NullProducts_ThrowsArgumentNullException()
     {
-        Assert.Throws<ArgumentNullException>(() => _mapper.Map((IEnumerable<Product>)null!));
+        // Act
+        Func<IEnumerable<ProductEntity>> action = () => _mapper.Map((IEnumerable<Product>)null!);
+
+        // Assert
+        action.Should().ThrowExactly<ArgumentNullException>();
     }
 
     /// <summary>
@@ -104,11 +128,15 @@ public class ProductDataMapperTests
     [Fact]
     public void Map_ProductEntitiesToProducts_NullProductEntities_ThrowsArgumentNullException()
     {
-        Assert.Throws<ArgumentNullException>(() => _mapper.Map((IEnumerable<ProductEntity>)null!));
+        // Act
+        Func<IEnumerable<Product>> action = () => _mapper.Map((IEnumerable<ProductEntity>)null!);
+
+        // Assert
+        action.Should().ThrowExactly<ArgumentNullException>();
     }
 
     #region Helpers
-    
+
     /// <summary>
     /// Asserts that the properties of a Product and ProductEntity are equivalent.
     /// </summary>
@@ -129,8 +157,8 @@ public class ProductDataMapperTests
     /// <param name="productEntities">The list of ProductEntity objects.</param>
     private void AssertProductListsAreEquivalent(IEnumerable<Product> products, IEnumerable<ProductEntity> productEntities)
     {
-        List<Product> productList = products.ToList();
-        List<ProductEntity> productEntityList = productEntities.ToList();
+        List<Product> productList = [.. products];
+        List<ProductEntity> productEntityList = [.. productEntities];
 
         productEntityList.Count.Should().Be(productList.Count);
         for (int i = 0; i < productList.Count; i++)
@@ -138,6 +166,6 @@ public class ProductDataMapperTests
             AssertProductAndProductEntityAreEquivalent(productList[i], productEntityList[i]);
         }
     }
-    
+
     #endregion
 }

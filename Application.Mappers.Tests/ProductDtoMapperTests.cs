@@ -17,10 +17,13 @@ public class ProductDtoMapperTests
     [Fact]
     public void Map_ProductToProductDto_MapsCorrectly()
     {
+        // Arrange
         Product product = new() { Id = Guid.NewGuid(), Name = "Test Product", Price = 9.99m };
 
+        // Act
         ProductDto result = _mapper.Map(product);
 
+        // Assert
         AssertProductAndProductDtoAreEquivalent(product, result);
     }
 
@@ -30,10 +33,13 @@ public class ProductDtoMapperTests
     [Fact]
     public void Map_ProductDtoToProduct_MapsCorrectly()
     {
+        // Arrange
         ProductDto productDto = new() { Id = Guid.NewGuid(), Name = "Test Product", Price = 9.99m };
 
+        // Act
         Product result = _mapper.Map(productDto);
 
+        // Assert
         AssertProductAndProductDtoAreEquivalent(result, productDto);
     }
 
@@ -43,7 +49,11 @@ public class ProductDtoMapperTests
     [Fact]
     public void Map_ProductToProductDto_NullProduct_ThrowsArgumentNullException()
     {
-        Assert.Throws<ArgumentNullException>(() => _mapper.Map((Product)null!));
+        // Act
+        Func<ProductDto> action = () => _mapper.Map((Product)null!);
+
+        // Assert
+        action.Should().ThrowExactly<ArgumentNullException>();
     }
 
     /// <summary>
@@ -52,7 +62,11 @@ public class ProductDtoMapperTests
     [Fact]
     public void Map_ProductDtoToProduct_NullProductDto_ThrowsArgumentNullException()
     {
-        Assert.Throws<ArgumentNullException>(() => _mapper.Map((ProductDto)null!));
+        // Act
+        Func<Product> action = () => _mapper.Map((ProductDto)null!);
+
+        // Assert
+        action.Should().ThrowExactly<ArgumentNullException>();
     }
 
     /// <summary>
@@ -61,14 +75,17 @@ public class ProductDtoMapperTests
     [Fact]
     public void Map_ProductsToProductDtos_MapsCorrectly()
     {
-        List<Product> products =
-        [
+        // Arrange
+        List<Product> products = new()
+        {
             new() { Id = Guid.NewGuid(), Name = "Product 1", Price = 9.99m },
             new() { Id = Guid.NewGuid(), Name = "Product 2", Price = 19.99m }
-        ];
+        };
 
+        // Act
         IEnumerable<ProductDto> result = _mapper.Map(products);
 
+        // Assert
         AssertProductListsAreEquivalent(products, result);
     }
 
@@ -78,14 +95,17 @@ public class ProductDtoMapperTests
     [Fact]
     public void Map_ProductDtosToProducts_MapsCorrectly()
     {
-        List<ProductDto> productDtos =
-        [
+        // Arrange
+        List<ProductDto> productDtos = new()
+        {
             new() { Id = Guid.NewGuid(), Name = "Product 1", Price = 9.99m },
             new() { Id = Guid.NewGuid(), Name = "Product 2", Price = 19.99m }
-        ];
+        };
 
+        // Act
         IEnumerable<Product> result = _mapper.Map(productDtos);
 
+        // Assert
         AssertProductListsAreEquivalent(result, productDtos);
     }
 
@@ -95,7 +115,11 @@ public class ProductDtoMapperTests
     [Fact]
     public void Map_ProductsToProductDtos_NullProducts_ThrowsArgumentNullException()
     {
-        Assert.Throws<ArgumentNullException>(() => _mapper.Map((IEnumerable<Product>)null!));
+        // Act
+        Func<IEnumerable<ProductDto>> action = () => _mapper.Map((IEnumerable<Product>)null!);
+
+        // Assert
+        action.Should().ThrowExactly<ArgumentNullException>();
     }
 
     /// <summary>
@@ -104,7 +128,11 @@ public class ProductDtoMapperTests
     [Fact]
     public void Map_ProductDtosToProducts_NullProductDtos_ThrowsArgumentNullException()
     {
-        Assert.Throws<ArgumentNullException>(() => _mapper.Map((IEnumerable<ProductDto>)null!));
+        // Act
+        Func<IEnumerable<Product>> action = () => _mapper.Map((IEnumerable<ProductDto>)null!);
+
+        // Assert
+        action.Should().ThrowExactly<ArgumentNullException>();
     }
 
     #region Helpers
