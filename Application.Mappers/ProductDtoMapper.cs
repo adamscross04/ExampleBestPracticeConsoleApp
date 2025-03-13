@@ -15,7 +15,7 @@ public class ProductDtoMapper: TwoWayMapperBase<ProductDto, Product>, IProductDt
         {
             Id = obj.Id,
             Name = obj.Name,
-            Price = obj.Price
+            Price = obj.Price,
         };
     }
 
@@ -27,7 +27,7 @@ public class ProductDtoMapper: TwoWayMapperBase<ProductDto, Product>, IProductDt
         {
             Id = obj.Id,
             Name = obj.Name,
-            Price = obj.Price
+            Price = obj.Price,
         };
     }
 }

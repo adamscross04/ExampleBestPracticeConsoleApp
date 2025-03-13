@@ -12,8 +12,8 @@ public class ProductRepositoryTests
 
     public ProductRepositoryTests()
     {
-        _mockDbConnectionWrapper = new Mock<IDbConnectionWrapper>();
-        _repository = new ProductRepository(_mockDbConnectionWrapper.Object);
+        _mockDbConnectionWrapper = new();
+        _repository = new(_mockDbConnectionWrapper.Object);
     }
 
     [Fact]
@@ -21,7 +21,7 @@ public class ProductRepositoryTests
     {
         // Arrange
         Guid productId = Guid.NewGuid();
-        ProductEntity expectedProduct = new ProductEntity { Id = productId, Name = "Test Product", Description = "Test Description", Price = 9.99m };
+        ProductEntity expectedProduct = new() { Id = productId, Name = "Test Product", Description = "Test Description", Price = 9.99m };
         _mockDbConnectionWrapper.Setup(db => db.QuerySingleOrDefaultAsync<ProductEntity>(
                 It.IsAny<string>(), It.IsAny<object>()))
             .ReturnsAsync(expectedProduct);
@@ -54,11 +54,11 @@ public class ProductRepositoryTests
     public async Task ReadMultipleByIds_ReturnsProductEntities_WhenProductsExist()
     {
         // Arrange
-        List<Guid> productIds = new List<Guid> { Guid.NewGuid(), Guid.NewGuid() };
-        List<ProductEntity> expectedProducts = new List<ProductEntity>
+        List<Guid> productIds = new() { Guid.NewGuid(), Guid.NewGuid() };
+        List<ProductEntity> expectedProducts = new()
         {
             new() { Id = productIds[0], Name = "Product 1", Description = "Description 1", Price = 9.99m },
-            new() { Id = productIds[1], Name = "Product 2", Description = "Description 2", Price = 19.99m }
+            new() { Id = productIds[1], Name = "Product 2", Description = "Description 2", Price = 19.99m },
         };
         _mockDbConnectionWrapper.Setup(db => db.QueryAsync<ProductEntity>(
                 It.IsAny<string>(), It.IsAny<object>()))
@@ -76,7 +76,7 @@ public class ProductRepositoryTests
     public async Task ReadMultipleByIds_ReturnsEmpty_WhenNoProductsExist()
     {
         // Arrange
-        List<Guid> productIds = new List<Guid> { Guid.NewGuid(), Guid.NewGuid() };
+        List<Guid> productIds = new() { Guid.NewGuid(), Guid.NewGuid() };
         _mockDbConnectionWrapper.Setup(db => db.QueryAsync<ProductEntity>(
                 It.IsAny<string>(), It.IsAny<object>()))
             .ReturnsAsync(Enumerable.Empty<ProductEntity>());

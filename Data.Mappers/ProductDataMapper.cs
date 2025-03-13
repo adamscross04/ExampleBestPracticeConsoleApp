@@ -24,7 +24,7 @@ public class ProductDataMapper: TwoWayMapperBase<ProductEntity, Product>, IProdu
             Id = obj.Id,
             Name = obj.Name,
             Description = obj.Description,
-            Price = obj.Price
+            Price = obj.Price,
         };
     }
 
@@ -42,7 +42,7 @@ public class ProductDataMapper: TwoWayMapperBase<ProductEntity, Product>, IProdu
             Id = obj.Id,
             Name = obj.Name,
             Description = obj.Description,
-            Price = obj.Price
+            Price = obj.Price,
         };
     }
 }
