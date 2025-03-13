@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Application.DTOs;
+﻿namespace Application.DTOs;
 
 /// <summary>
 /// Data Transfer Object for Product.

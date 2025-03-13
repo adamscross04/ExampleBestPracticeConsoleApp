@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace Common.Repository.Update;
+﻿namespace Common.Repository.Update;
 
 /// <summary>
 /// Interface for updating a single entity.
