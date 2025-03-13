@@ -6,4 +6,10 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Application.DTOs\Application.DTOs.csproj" />
+      <ProjectReference Include="..\Common.Mappers\Common.Mappers.csproj" />
+      <ProjectReference Include="..\Domain.Models\Domain.Models.csproj" />
+    </ItemGroup>
+
 </Project>
