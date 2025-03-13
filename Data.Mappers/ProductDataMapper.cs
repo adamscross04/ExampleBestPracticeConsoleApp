@@ -17,6 +17,8 @@ public class ProductDataMapper: TwoWayMapperBase<ProductEntity, Product>, IProdu
     /// <returns>The mapped ProductEntity object.</returns>
     public override ProductEntity Map(Product obj)
     {
+        ArgumentNullException.ThrowIfNull(obj, nameof(obj));
+        
         return new ProductEntity
         {
             Id = obj.Id,
@@ -33,6 +35,8 @@ public class ProductDataMapper: TwoWayMapperBase<ProductEntity, Product>, IProdu
     /// <returns>The mapped Product object.</returns>
     public override Product Map(ProductEntity obj)
     {
+        ArgumentNullException.ThrowIfNull(obj, nameof(obj));
+        
         return new Product
         {
             Id = obj.Id,
