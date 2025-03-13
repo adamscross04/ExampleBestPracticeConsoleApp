@@ -76,11 +76,11 @@ public class ProductDtoMapperTests
     public void Map_ProductsToProductDtos_MapsCorrectly()
     {
         // Arrange
-        List<Product> products = new()
-        {
+        List<Product> products =
+        [
             new() { Id = Guid.NewGuid(), Name = "Product 1", Price = 9.99m },
             new() { Id = Guid.NewGuid(), Name = "Product 2", Price = 19.99m }
-        };
+        ];
 
         // Act
         IEnumerable<ProductDto> result = _mapper.Map(products);
@@ -96,11 +96,11 @@ public class ProductDtoMapperTests
     public void Map_ProductDtosToProducts_MapsCorrectly()
     {
         // Arrange
-        List<ProductDto> productDtos = new()
-        {
+        List<ProductDto> productDtos =
+        [
             new() { Id = Guid.NewGuid(), Name = "Product 1", Price = 9.99m },
             new() { Id = Guid.NewGuid(), Name = "Product 2", Price = 19.99m }
-        };
+        ];
 
         // Act
         IEnumerable<Product> result = _mapper.Map(productDtos);
