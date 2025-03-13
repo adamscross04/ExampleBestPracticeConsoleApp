@@ -1,4 +1,6 @@
-﻿namespace Common.Mappers;
+﻿using Common.Mappers.Abstractions;
+
+namespace Common.Mappers;
 
 /// <summary>
 /// Abstract base class for one-way mapping between two types.

@@ -1,4 +1,4 @@
-﻿namespace Common.Mappers;
+﻿namespace Common.Mappers.Abstractions;
 
 /// <summary>
 ///     Interface for mapping an object of type TIn to an object of type TOut.

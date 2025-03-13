@@ -1,4 +1,4 @@
-﻿namespace Common.Mappers;
+﻿namespace Common.Mappers.Abstractions;
 
 /// <summary>
 ///     Interface for mapping objects between two types T1 and T2.
