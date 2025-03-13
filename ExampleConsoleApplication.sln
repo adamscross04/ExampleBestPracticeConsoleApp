@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Mappers", "Common.Ma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Repository", "Common.Repository\Common.Repository.csproj", "{125490FA-B630-4905-A8FC-DBDAC033281C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mappers", "Mappers\Mappers.csproj", "{F6841240-BDB1-43E9-BFDA-AAB22BF89403}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Repositories", "Data.Repositories\Data.Repositories.csproj", "{9760FB52-0649-4F08-8FE4-3D6A02EEFD78}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Models", "Domain.Models\Domain.Models.csproj", "{D9174C91-B77E-4D00-AEBD-5C98D096A598}"
@@ -43,10 +41,6 @@ Global
 		{125490FA-B630-4905-A8FC-DBDAC033281C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{125490FA-B630-4905-A8FC-DBDAC033281C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{125490FA-B630-4905-A8FC-DBDAC033281C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F6841240-BDB1-43E9-BFDA-AAB22BF89403}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F6841240-BDB1-43E9-BFDA-AAB22BF89403}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F6841240-BDB1-43E9-BFDA-AAB22BF89403}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F6841240-BDB1-43E9-BFDA-AAB22BF89403}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9760FB52-0649-4F08-8FE4-3D6A02EEFD78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9760FB52-0649-4F08-8FE4-3D6A02EEFD78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9760FB52-0649-4F08-8FE4-3D6A02EEFD78}.Release|Any CPU.ActiveCfg = Release|Any CPU
