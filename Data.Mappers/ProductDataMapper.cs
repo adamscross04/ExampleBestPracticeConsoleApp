@@ -19,7 +19,7 @@ public class ProductDataMapper: TwoWayMapperBase<ProductEntity, Product>, IProdu
     {
         ArgumentNullException.ThrowIfNull(obj, nameof(obj));
         
-        return new ProductEntity
+        return new()
         {
             Id = obj.Id,
             Name = obj.Name,
@@ -37,7 +37,7 @@ public class ProductDataMapper: TwoWayMapperBase<ProductEntity, Product>, IProdu
     {
         ArgumentNullException.ThrowIfNull(obj, nameof(obj));
         
-        return new Product
+        return new()
         {
             Id = obj.Id,
             Name = obj.Name,

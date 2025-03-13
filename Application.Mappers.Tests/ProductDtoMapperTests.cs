@@ -17,9 +17,9 @@ public class ProductDtoMapperTests
     [Fact]
     public void Map_ProductToProductDto_MapsCorrectly()
     {
-        var product = new Product { Id = Guid.NewGuid(), Name = "Test Product", Price = 9.99m };
+        Product product = new() { Id = Guid.NewGuid(), Name = "Test Product", Price = 9.99m };
 
-        var result = _mapper.Map(product);
+        ProductDto result = _mapper.Map(product);
 
         AssertProductAndProductDtoAreEquivalent(product, result);
     }
@@ -30,9 +30,9 @@ public class ProductDtoMapperTests
     [Fact]
     public void Map_ProductDtoToProduct_MapsCorrectly()
     {
-        var productDto = new ProductDto { Id = Guid.NewGuid(), Name = "Test Product", Price = 9.99m };
+        ProductDto productDto = new() { Id = Guid.NewGuid(), Name = "Test Product", Price = 9.99m };
 
-        var result = _mapper.Map(productDto);
+        Product result = _mapper.Map(productDto);
 
         AssertProductAndProductDtoAreEquivalent(result, productDto);
     }
@@ -61,13 +61,13 @@ public class ProductDtoMapperTests
     [Fact]
     public void Map_ProductsToProductDtos_MapsCorrectly()
     {
-        var products = new List<Product>
-        {
+        List<Product> products =
+        [
             new() { Id = Guid.NewGuid(), Name = "Product 1", Price = 9.99m },
             new() { Id = Guid.NewGuid(), Name = "Product 2", Price = 19.99m }
-        };
+        ];
 
-        var result = _mapper.Map(products);
+        IEnumerable<ProductDto> result = _mapper.Map(products);
 
         AssertProductListsAreEquivalent(products, result);
     }
@@ -78,13 +78,13 @@ public class ProductDtoMapperTests
     [Fact]
     public void Map_ProductDtosToProducts_MapsCorrectly()
     {
-        var productDtos = new List<ProductDto>
-        {
+        List<ProductDto> productDtos =
+        [
             new() { Id = Guid.NewGuid(), Name = "Product 1", Price = 9.99m },
             new() { Id = Guid.NewGuid(), Name = "Product 2", Price = 19.99m }
-        };
+        ];
 
-        var result = _mapper.Map(productDtos);
+        IEnumerable<Product> result = _mapper.Map(productDtos);
 
         AssertProductListsAreEquivalent(result, productDtos);
     }
@@ -128,8 +128,8 @@ public class ProductDtoMapperTests
     /// <param name="productDtos">The list of ProductDto objects.</param>
     private void AssertProductListsAreEquivalent(IEnumerable<Product> products, IEnumerable<ProductDto> productDtos)
     {
-        var productList = products.ToList();
-        var productDtoList = productDtos.ToList();
+        List<Product> productList = products.ToList();
+        List<ProductDto> productDtoList = productDtos.ToList();
 
         productDtoList.Count.Should().Be(productList.Count);
         for (int i = 0; i < productList.Count; i++)

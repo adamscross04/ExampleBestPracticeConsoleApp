@@ -11,7 +11,7 @@ public class ProductDtoMapper: TwoWayMapperBase<ProductDto, Product>, IProductDt
     {
         ArgumentNullException.ThrowIfNull(obj);
         
-        return new ProductDto
+        return new()
         {
             Id = obj.Id,
             Name = obj.Name,
@@ -23,7 +23,7 @@ public class ProductDtoMapper: TwoWayMapperBase<ProductDto, Product>, IProductDt
     {
         ArgumentNullException.ThrowIfNull(obj);
         
-        return new Product
+        return new()
         {
             Id = obj.Id,
             Name = obj.Name,
