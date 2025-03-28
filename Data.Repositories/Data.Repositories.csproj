@@ -11,6 +11,7 @@
       <ProjectReference Include="..\Common.Repository\Common.Repository.csproj" />
       <ProjectReference Include="..\Data.Dapper.Extensions\Data.Dapper.Extensions.csproj" />
       <ProjectReference Include="..\Data.Entities\Data.Entities.csproj" />
+      <ProjectReference Include="..\Data.Mappers\Data.Mappers.csproj" />
     </ItemGroup>
 
     <ItemGroup>

@@ -20,4 +20,18 @@ public interface ITwoWayMapper<T1, T2>
     /// <param name="obj">The object of type T1 to be mapped.</param>
     /// <returns>The mapped object of type T2.</returns>
     T2 Map(T1 obj);
+
+    /// <summary>
+    ///     Maps a collection of objects of type T2 to a collection of objects of type T1.
+    /// </summary>
+    /// <param name="objs">The collection of objects of type T2 to be mapped.</param>
+    /// <returns>The mapped collection of objects of type T1.</returns>
+    IEnumerable<T1> Map(IEnumerable<T2> objs);
+
+    /// <summary>
+    ///     Maps a collection of objects of type T1 to a collection of objects of type T2.
+    /// </summary>
+    /// <param name="objs">The collection of objects of type T1 to be mapped.</param>
+    /// <returns>The mapped collection of objects of type T2.</returns>
+    IEnumerable<T2> Map(IEnumerable<T1> objs);
 }
