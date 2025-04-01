@@ -8,13 +8,15 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.3"/>
+        <PackageReference Include="Npgsql" Version="9.0.3" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="8.0.0" />
+        <PackageReference Include="ZiggyCreatures.FusionCache" Version="2.1.0" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Application.DTOs\Application.DTOs.csproj" />
       <ProjectReference Include="..\Application.Mappers\Application.Mappers.csproj" />
-      <ProjectReference Include="..\Application.Requests\Application.Requests.csproj" />
+      <ProjectReference Include="..\Shared.Requests\Shared.Requests.csproj" />
       <ProjectReference Include="..\Domain.Services\Domain.Services.csproj" />
     </ItemGroup>
 

@@ -1,9 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Domain.Validation.Abstractions;
-using Domain.Validation.Implementations;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Domain.Validation;
+namespace Domain.Factories;
 
 [ExcludeFromCodeCoverage]
 public static class ServiceProviderExtensions
@@ -12,8 +10,8 @@ public static class ServiceProviderExtensions
     ///     Registers the application validation services with the specified service collection.
     /// </summary>
     /// <param name="services">The service collection to add the services to.</param>
-    public static void RegisterApplicationValidationServices(this IServiceCollection services)
+    public static void RegisterDomainFactories(this IServiceCollection services)
     {
-        services.AddTransient<IProductCreateValidationService, ProductCreateValidationService>();
+        services.AddTransient<IProductFactory, ProductFactory>();
     }
 }

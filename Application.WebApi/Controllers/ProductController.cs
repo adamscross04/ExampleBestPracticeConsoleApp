@@ -1,5 +1,6 @@
 ﻿using Application.DTOs;
 using Application.Mappers.Abstractions;
+using Application.Requests;
 using Common.Exceptions;
 using Domain.Models;
 using Domain.Services.Abstractions;
@@ -20,8 +21,9 @@ public class ProductController(IProductService productService, IProductDtoMapper
             return Ok(products);
         }
         catch(Exception e)
-        {
+        { 
             // Log exception (ex) here as needed.
+            Console.WriteLine(e.Message);
             return StatusCode(500, "An unexpected error occurred.");
         }
     }
@@ -49,12 +51,12 @@ public class ProductController(IProductService productService, IProductDtoMapper
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateProduct([FromBody] ProductDto productDto)
+    public async Task<IActionResult> CreateProduct([FromBody] ProductCreateRequest productCreateRequest)
     {
         try
         {
-            Product product = await productService.CreateProduct(productDtoMapper.Map(productDto));
-            return Ok(product);
+            await productService.CreateProduct(productCreateRequest);
+            return Created();
         }
         catch (ValidationException e)
         {

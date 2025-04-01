@@ -1,9 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Domain.Validation.Abstractions;
-using Domain.Validation.Implementations;
+using Data.Dapper.Extensions.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Domain.Validation;
+namespace Data.Dapper.Extensions;
 
 [ExcludeFromCodeCoverage]
 public static class ServiceProviderExtensions
@@ -12,8 +11,8 @@ public static class ServiceProviderExtensions
     ///     Registers the application validation services with the specified service collection.
     /// </summary>
     /// <param name="services">The service collection to add the services to.</param>
-    public static void RegisterApplicationValidationServices(this IServiceCollection services)
+    public static void RegisterDatabaseExtensions(this IServiceCollection services)
     {
-        services.AddTransient<IProductCreateValidationService, ProductCreateValidationService>();
+        services.AddTransient<IDbConnectionWrapper, DbConnectionWrapper>();
     }
 }

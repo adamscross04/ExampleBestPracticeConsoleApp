@@ -8,6 +8,14 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Common.Factories\Common.Factories.csproj" />
+      <ProjectReference Include="..\Domain.Models\Domain.Models.csproj" />
+      <ProjectReference Include="..\Shared.Requests\Shared.Requests.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+        <HintPath>C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\9.0.3\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>

@@ -103,6 +103,11 @@ namespace Common.Validation.Implementations
             return value != 0;
         }
 
+        protected bool IsZeroOrNegative(decimal value)
+        {
+            return value <= 0;
+        }
+
         protected bool IsNegative(decimal value)
         {
             return value < 0;

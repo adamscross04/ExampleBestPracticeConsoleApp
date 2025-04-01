@@ -13,8 +13,13 @@ public class DbConnectionWrapper(IDbConnection dbConnection) : IDbConnectionWrap
         return dbConnection.QueryAsync<T>(sql, param);
     }
 
-    public Task<T?> QuerySingleOrDefaultAsync<T>(string sql, object param = null)
+    public Task<T?> QuerySingleOrDefaultAsync<T>(string sql, object param = null, CancellationToken token = default)
     {
-        return dbConnection.QuerySingleOrDefaultAsync<T>(sql, param);
+        return dbConnection.QuerySingleOrDefaultAsync<T>(new CommandDefinition(sql, param, cancellationToken: token));
+    }
+
+    public Task ExecuteAsync<T>(string sql, T entity)
+    {
+        return dbConnection.ExecuteAsync(sql, entity);
     }
 }

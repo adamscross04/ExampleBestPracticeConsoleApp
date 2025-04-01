@@ -10,6 +10,7 @@
     <ItemGroup>
       <ProjectReference Include="..\Common.Validation\Common.Validation.csproj" />
       <ProjectReference Include="..\Domain.Models\Domain.Models.csproj" />
+      <ProjectReference Include="..\Shared.Requests\Shared.Requests.csproj" />
     </ItemGroup>
 
     <ItemGroup>

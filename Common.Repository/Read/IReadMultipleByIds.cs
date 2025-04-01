@@ -12,4 +12,11 @@ public interface IReadMultipleByIds<T>
     /// <param name="ids">The IDs of the entities to read.</param>
     /// <returns>A task representing the asynchronous operation, with the entities as the result.</returns>
     Task<IEnumerable<T>> ReadMultipleByIds(IEnumerable<Guid> ids);
+
+    /// <summary>
+    /// Reads multiple entities by their IDs as params.
+    /// </summary>
+    /// <param name="ids">The IDs of the entities to read.</param>
+    /// <returns>A task representing the asynchronous operation, with the entities as the result.</returns>
+    Task<IEnumerable<T>> ReadMultipleByIds(params Guid[] ids);
 }

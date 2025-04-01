@@ -1,9 +1,10 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Domain.Validation.Abstractions;
-using Domain.Validation.Implementations;
+using Application.Mappers.Abstractions;
+using Application.Mappers.Implementations;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Domain.Validation;
+namespace Application.Mappers;
+
 
 [ExcludeFromCodeCoverage]
 public static class ServiceProviderExtensions
@@ -12,8 +13,9 @@ public static class ServiceProviderExtensions
     ///     Registers the application validation services with the specified service collection.
     /// </summary>
     /// <param name="services">The service collection to add the services to.</param>
-    public static void RegisterApplicationValidationServices(this IServiceCollection services)
+    public static void RegisterApplicationMappers(this IServiceCollection services)
     {
-        services.AddTransient<IProductCreateValidationService, ProductCreateValidationService>();
+        services.AddTransient<IUserDtoMapper, UserDtoMapper>();
+        services.AddTransient<IProductDtoMapper, ProductDtoMapper>();
     }
 }

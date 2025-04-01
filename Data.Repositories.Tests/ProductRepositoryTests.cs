@@ -5,21 +5,24 @@ using Data.Repositories.Implementations;
 using Domain.Models;
 using Moq;
 using FluentAssertions;
+using ZiggyCreatures.Caching.Fusion;
+using ZiggyCreatures.Caching.Fusion.NullObjects;
 
 namespace Data.Repositories.Tests;
 
 public class ProductRepositoryTests
 {
     private readonly Mock<IDbConnectionWrapper> _mockDbConnectionWrapper;
-    private readonly Mock<ProductEntityMapper> _mockProductEntityMapper;
     private readonly ProductRepository _repository;
+    
+    private readonly NullFusionCache _nullFusionCache = new(new FusionCacheOptions());
 
     public ProductRepositoryTests()
     {
         _mockDbConnectionWrapper = new Mock<IDbConnectionWrapper>();
-        _mockProductEntityMapper = new Mock<ProductEntityMapper>();
+        Mock<ProductEntityMapper> mockProductEntityMapper = new();
 
-        _mockProductEntityMapper
+        mockProductEntityMapper
             .Setup(m => m.Map(It.IsAny<ProductEntity>()))
             .Returns((ProductEntity pe) => new Product
             {
@@ -29,7 +32,7 @@ public class ProductRepositoryTests
                 Price = pe.Price
             });
 
-        _repository = new ProductRepository(_mockDbConnectionWrapper.Object, _mockProductEntityMapper.Object);
+        _repository = new ProductRepository(_mockDbConnectionWrapper.Object, mockProductEntityMapper.Object, _nullFusionCache);
     }
 
     [Fact]
@@ -45,7 +48,7 @@ public class ProductRepositoryTests
             Price = 9.99m
         };
         _mockDbConnectionWrapper.Setup(db => db.QuerySingleOrDefaultAsync<ProductEntity>(
-                It.IsAny<string>(), It.IsAny<object>()))
+                It.IsAny<string>(), It.IsAny<object>(), CancellationToken.None))
             .ReturnsAsync(expectedProduct);
 
         // Act
@@ -62,7 +65,7 @@ public class ProductRepositoryTests
         // Arrange
         Guid productId = Guid.NewGuid();
         _mockDbConnectionWrapper.Setup(db => db.QuerySingleOrDefaultAsync<ProductEntity>(
-                It.IsAny<string>(), It.IsAny<object>()))
+                It.IsAny<string>(), It.IsAny<object>(), CancellationToken.None))
             .ReturnsAsync((ProductEntity)null!);
 
         // Act

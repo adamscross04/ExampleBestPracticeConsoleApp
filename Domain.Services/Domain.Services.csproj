@@ -14,10 +14,12 @@
     <ItemGroup>
       <ProjectReference Include="..\Common.Exceptions\Common.Exceptions.csproj" />
       <ProjectReference Include="..\Data.Repositories\Data.Repositories.csproj" />
+      <ProjectReference Include="..\Domain.Factories\Domain.Factories.csproj" />
       <ProjectReference Include="..\Domain.Models\Domain.Models.csproj" />
       <ProjectReference Include="..\Domain.Validation\Domain.Validation.csproj" />
       <ProjectReference Include="..\Shared.Queueing.Abstractions\Shared.Queueing.Abstractions.csproj" />
       <ProjectReference Include="..\Shared.Queueing.Messages\Shared.Queueing.Messages.csproj" />
+      <ProjectReference Include="..\Shared.Requests\Shared.Requests.csproj" />
     </ItemGroup>
 
 </Project>

@@ -24,7 +24,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Application.Mappers\Application.Mappers.csproj" />
+        <ProjectReference Include="..\Data.Services\Data.Services.csproj" />
     </ItemGroup>
 
 </Project>
